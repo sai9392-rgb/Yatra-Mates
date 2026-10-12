@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yatra Mates | Explore Together</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+
+            <h1 class="logo">Yatra Mates</h1>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#trips">Explore Trips</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#budget">Budget Planner</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="login-btn"
+             onclick="window.location.href='login.html'">
+                Login
+           </button>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="small-heading">TRAVEL • EXPLORE • CONNECT</p>
+
+            <h2>Adventure Is Better Together</h2>
+
+            <p>
+                Discover amazing destinations, meet new travel mates,
+                plan your budget and create unforgettable journeys.
+            </p>
+
+            <button class="main-btn" onclick="exploreTrips()">
+                Explore Trips
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Search Section -->
+    <section class="search-section">
+
+        <h2>Find Your Next Adventure</h2>
+
+        <p>Search for your perfect destination</p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search destination..."
+            >
+
+            <button onclick="searchDestination()">
+                Search
+            </button>
+
+        </div>
+
+        <p id="searchResult"></p>
+
+    </section>
+
+
+    <!-- Popular Destinations -->
+    <section class="destinations" id="destinations">
+
+        <div class="section-heading">
+            <p>EXPLORE INDIA</p>
+            <h2>Popular Destinations</h2>
+        </div>
+
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+                    alt="Mountain destination"
+                >
+
+                <div class="card-content">
+                    <h3>Manali</h3>
+                    <p>
+                        Mountains, snow, adventure and beautiful valleys.
+                    </p>
+
+                    <button onclick="viewDestination('Manali')">
+                        View Trips
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2"
+                    alt="Goa beach"
+                >
+
+                <div class="card-content">
+                    <h3>Goa</h3>
+                    <p>
+                        Beaches, sunsets, nightlife and adventure.
+                    </p>
+
+                    <button onclick="viewDestination('Goa')">
+                        View Trips
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
+                    alt="Beautiful hill destination"
+                >
+
+                <div class="card-content">
+                    <h3>Ooty</h3>
+                    <p>
+                        Peaceful hills, greenery and unforgettable views.
+                    </p>
+
+                    <button onclick="viewDestination('Ooty')">
+                        View Trips
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
+                    alt="Ladakh mountains"
+                >
+
+                <div class="card-content">
+                    <h3>Ladakh</h3>
+                    <p>
+                        High mountains, scenic roads and thrilling journeys.
+                    </p>
+
+                    <button onclick="viewDestination('Ladakh')">
+                        View Trips
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Featured Trips -->
+    <section class="trips" id="trips">
+
+        <div class="section-heading">
+            <p>JOIN OTHER TRAVELLERS</p>
+            <h2>Featured Trips</h2>
+        </div>
+
+
+        <div class="trip-container">
+
+            <div class="trip-card">
+
+                <div class="trip-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1544735716-392fe2489ffa"
+                        alt="Mountain trip"
+                    >
+                </div>
+
+                <div class="trip-content">
+
+                    <span class="trip-tag">ADVENTURE</span>
+
+                    <h3>Hyderabad → Manali</h3>
+
+                    <p>3 Days / 2 Nights</p>
+
+                    <div class="trip-info">
+                        <span>₹6,500</span>
+                        <span>👥 8/10</span>
+                    </div>
+
+                    <button onclick="joinTrip('Hyderabad to Manali')">
+                        Join Trip
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="trip-card">
+
+                <div class="trip-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+                        alt="Beach trip"
+                    >
+                </div>
+
+                <div class="trip-content">
+
+                    <span class="trip-tag">BEACH</span>
+
+                    <h3>Hyderabad → Goa</h3>
+
+                    <p>4 Days / 3 Nights</p>
+
+                    <div class="trip-info">
+                        <span>₹7,200</span>
+                        <span>👥 6/10</span>
+                    </div>
+
+                    <button onclick="joinTrip('Hyderabad to Goa')">
+                        Join Trip
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="trip-card">
+
+                <div class="trip-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1464278533981-50106e6176b1"
+                        alt="Nature trip"
+                    >
+                </div>
+
+                <div class="trip-content">
+
+                    <span class="trip-tag">NATURE</span>
+
+                    <h3>Hyderabad → Ooty</h3>
+
+                    <p>3 Days / 2 Nights</p>
+
+                    <div class="trip-info">
+                        <span>₹5,500</span>
+                        <span>👥 5/8</span>
+                    </div>
+
+                    <button onclick="joinTrip('Hyderabad to Ooty')">
+                        Join Trip
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Why Yatra Mates -->
+    <section class="features">
+
+        <div class="section-heading">
+            <p>WHY CHOOSE US</p>
+            <h2>Everything You Need For Your Journey</h2>
+        </div>
+
+
+        <div class="feature-container">
+
+            <div class="feature">
+                <div class="feature-icon">🌍</div>
+                <h3>Discover Trips</h3>
+                <p>
+                    Find exciting trips and unexplored destinations.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>Meet Travel Mates</h3>
+                <p>
+                    Connect with people who share your travel interests.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Plan Your Budget</h3>
+                <p>
+                    Calculate and manage your complete trip budget.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                <div class="feature-icon">🚗</div>
+                <h3>Find Vehicles</h3>
+                <p>
+                    Discover vehicles available for your adventure.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <h2>Yatra Mates</h2>
+
+        <p>
+            Explore together. Travel farther. Create memories.
+        </p>
+
+        <p class="copyright">
+            © 2026 Yatra Mates. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
