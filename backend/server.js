@@ -1,5 +1,10 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
+
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -36,6 +41,18 @@ app.get("/api/trips", (req, res) => {
     res.json(trips);
 });
 
-app.listen(5000, () => {
-    console.log("Yatra Mates server running on port 5000");
-});
+app.use("/api/users", userRoutes);
+
+const PORT = 5000;
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("MongoDB connected successfully!");
+
+        app.listen(PORT, () => {
+            console.log(`Yatra Mates server running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("MongoDB connection failed:", error.message);
+    });

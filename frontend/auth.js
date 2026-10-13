@@ -1,39 +1,15 @@
+const API_URL = "http://localhost:5000/api/users";
 
-const loginForm = document.getElementById("loginForm");
-
-if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const message = document.getElementById("message");
-
-        if (email === "" || password === "") {
-            message.textContent = "Please fill in all fields.";
-            return;
-        }
-
-        message.textContent =
-            "Form validated! Backend login is our next step.";
-    });
-}
-
-
-
-
+// Registration form
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
-    registerForm.addEventListener("submit", function (event) {
+    registerForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const name = document.getElementById("name").value.trim();
-
         const email = document.getElementById("registerEmail").value.trim();
-
         const password = document.getElementById("registerPassword").value;
-
         const confirmPassword =
             document.getElementById("confirmPassword").value;
 
@@ -44,8 +20,44 @@ if (registerForm) {
             return;
         }
 
-        message.textContent =
-            "Registration form validated for " + name +
-            ". Backend registration is our next step.";
+        message.textContent = "Creating your account...";
+
+        try {
+            const response = await fetch(API_URL + "/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            message.textContent = data.message;
+
+            if (response.ok) {
+                registerForm.reset();
+            }
+
+        } catch (error) {
+            message.textContent =
+                "Cannot connect to the server. Check the backend.";
+        }
+    });
+}
+
+// Login form — backend login will be added next.
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        document.getElementById("message").textContent =
+            "Login backend is our next step.";
     });
 }
