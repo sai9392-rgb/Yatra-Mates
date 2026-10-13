@@ -41,6 +41,13 @@ if (registerForm) {
 
             if (response.ok) {
                 registerForm.reset();
+
+                message.textContent =
+                    "Registration successful! Taking you to login...";
+
+                setTimeout(function () {
+                    window.location.href = "login.html";
+                }, 1500);
             }
 
         } catch (error) {
@@ -50,14 +57,46 @@ if (registerForm) {
     });
 }
 
-// Login form — backend login will be added next.
+// Login form
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
+    loginForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        document.getElementById("message").textContent =
-            "Login backend is our next step.";
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const message = document.getElementById("message");
+
+        message.textContent = "Logging in...";
+
+        try {
+            const response = await fetch(API_URL + "/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            message.textContent = data.message;
+
+            if (response.ok) {
+                // Remember who is logged in (name and email only).
+                // Add a token (JWT) once the backend needs to know
+                // who is logged in, e.g. to save joined trips.
+                localStorage.setItem("user", JSON.stringify(data.user));
+                window.location.href = "index.html";
+            }
+
+        } catch (error) {
+            message.textContent =
+                "Cannot connect to the server. Check the backend.";
+        }
     });
 }

@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -11,9 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Yatra Mates Backend is Running!");
-});
+// Serve the website (the frontend folder) from this same server
+app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 app.get("/api/trips", (req, res) => {
 
@@ -49,8 +49,15 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("MongoDB connected successfully!");
 
-        app.listen(PORT, () => {
-            console.log(`Yatra Mates server running on port ${PORT}`);
+        app.listen(PORT, (error) => {
+            // Express 5 passes startup errors here (e.g. port already in use)
+            if (error) {
+                console.error(`Could not start on port ${PORT}: ${error.message}`);
+                console.error("Is Yatra Mates already running in another terminal?");
+                process.exit(1);
+            }
+
+            console.log(`Yatra Mates is running: open http://localhost:${PORT}`);
         });
     })
     .catch((error) => {

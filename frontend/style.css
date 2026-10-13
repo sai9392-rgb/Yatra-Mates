@@ -63,6 +63,12 @@ body {
     font-weight: bold;
 }
 
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 
 /* Hero Section */
 
@@ -82,7 +88,7 @@ body {
             rgba(0, 0, 0, 0.55),
             rgba(0, 0, 0, 0.55)
         ),
-        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b");
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80&auto=format");
 
     background-size: cover;
     background-position: center;
@@ -339,6 +345,58 @@ body {
     font-weight: bold;
 }
 
+.trip-filter {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+#showAllTrips {
+    margin-top: 12px;
+    padding: 8px 18px;
+
+    border: 1px solid #073b3a;
+    border-radius: 6px;
+
+    background-color: white;
+    color: #073b3a;
+
+    cursor: pointer;
+}
+
+
+/* Budget Planner */
+
+.budget {
+    padding: 80px 6%;
+}
+
+.budget-form {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 480px;
+    margin: auto;
+    padding: 30px;
+
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+}
+
+.budget-form p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#budgetResult {
+    margin: 20px 0 0;
+    text-align: center;
+    color: #073b3a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 /* Features */
 
@@ -492,12 +550,14 @@ footer p {
     flex-direction: column;
 }
 
-.auth-container label {
+.auth-container label,
+.budget-form label {
     margin-bottom: 7px;
     font-weight: bold;
 }
 
-.auth-container input {
+.auth-container input,
+.budget-form input {
     padding: 12px;
     margin-bottom: 18px;
     border: 1px solid #ccc;
@@ -505,7 +565,8 @@ footer p {
     font-size: 15px;
 }
 
-.auth-container button {
+.auth-container button,
+.budget-form button {
     padding: 13px;
     border: none;
     border-radius: 6px;
@@ -515,7 +576,8 @@ footer p {
     cursor: pointer;
 }
 
-.auth-container button:hover {
+.auth-container button:hover,
+.budget-form button:hover {
     background: #126b65;
 }
 
